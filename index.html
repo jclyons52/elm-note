@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div id="app"></div>
+		</div>
+	</div>
+
+	
+	<script src="elm.js"></script>
+	<script>
+		var div = document.getElementById('app');
+		Elm.embed(Elm.App, div);
+	</script>
+</body>
+</html>

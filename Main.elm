@@ -1,6 +1,6 @@
 module App where
 
-import Board exposing (update, view, init)
+import Dashboard exposing (update, view, init)
 import StartApp.Simple exposing (start)
 
 

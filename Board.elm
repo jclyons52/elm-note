@@ -1,4 +1,4 @@
-module Board where
+module Board (Model, view, Action, update, init, Context) where
 
 import Note
 import Html exposing (..)
@@ -52,16 +52,20 @@ update action model =
 
 -- VIEW
 
-view : Signal.Address Action -> Model -> Html
-view address model = 
+type alias Context =
+    { actions : Signal.Address Action
+    }
+
+view : Context -> Model -> Html
+view context model = 
     let insert = button [ class "btn btn-sm btn-success glyphicon glyphicon-plus"
-                        , onClick address Insert 
+                        , onClick context.actions Insert 
                         , addStyles
                         ]
                         []
 
     in 
-        div [ class "board" ] (insert :: List.map (viewNote address) model.notes)
+        div [ class "board" ] (insert :: List.map (viewNote context.actions) model.notes)
 
 addStyles : Attribute
 addStyles =

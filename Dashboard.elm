@@ -32,7 +32,7 @@ update action model =
     case action of 
         Insert -> 
             { model | 
-                boards <- Board.init :: model.boards,
+                boards <- (model.nextID, Board.init) :: model.boards,
                 nextID <- model.nextID + 1  
             }
 
@@ -50,8 +50,8 @@ view address model =
         (insert :: List.map (viewBoard address) model.boards)
 
 
-viewBoard : Signal.Address Action ->  (ID, Board.Model) -> Html
-viewBoard address (id, model) =
+viewBoard : Signal.Address Action -> Board.Model -> Html
+viewBoard address model =
      let context = Board.Context
      in
       Board.view context model
